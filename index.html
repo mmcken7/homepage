@@ -63,11 +63,11 @@ body.invert-colors .title {
 window.addEventListener("load", () => {
   document.querySelector(".fade-in-title").classList.add("show");
   setTimeout(() => {
-    document.querySelector(".fade-in-icons").classList.add("show");
-  }, 1200); // Delay icons fade by ~1.2s
-  setTimeout(() => {
     document.body.classList.add("invert-colors");
   }, 3000);
+  setTimeout(() => {
+    document.querySelector(".fade-in-icons").classList.add("show");
+  }, 1200); // Delay icons fade by ~1.2s
 });
 </script>
 
