@@ -27,17 +27,27 @@ font-family: Arial, Helvetica, sans-serif;
 </div>
 <style>
 #introVideo {
-  width: auto;
-  height: auto;
-max-width: 65vw;
-max-height: 65vh;
+  width: 100vw;
+  height: 100vh;
+max-width: 100vw;
+max-height: 100vh;
   object-fit: contain; 
 background: white;
 }
   </style>
 <script>
-const intro = document.getElementById('introVideoContainer');
   const video = document.getElementById('introVideo');
+  function tryplay() {
+    video.muted = true;
+    video.play().catch(() => {
+      if (video) {
+    if (video.readyState >= 2) {
+      tryPlay();
+    } else {
+      video.addEventListener('canplay', tryPlay, { once: true });
+    }
+        document.addEventListener('click', tryPlay, { once: true });
+  }
   video.addEventListener('ended', () => {
     intro.style.opacity = 0;
     setTimeout(() => intro.style.display = 'none', 1000);
