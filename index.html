@@ -73,27 +73,29 @@ background: white;
 <script>
     const intro = document.getElementById('introVideoContainer');
   const video = document.getElementById('introVideo');
-  function tryplay() {
+  function tryPlay() {
     if (!video) return;
     video.muted = true;
-    const p = video.play();
+    const p = video.Play();
     if (p && typeof p.catch === 'function') {
       p.catch(() => {});
     }
   }
       if (video) {
     if (video.readyState >= 2) {
-      tryplay();
+      tryPlay();
     } else {
-      video.addEventListener('canplay', tryplay, { once: true });
+      video.addEventListener('canplay', tryPlay, { once: true });
     }
-        document.addEventListener('click', tryplay, { once: true });
+     document.addEventListener('click', tryPlay, { once: true });
   }
+  
   video.addEventListener('ended', () => {
     if (!intro) return;
     intro.style.opacity = 0;
     setTimeout(() => intro.style.display = 'none', 1000);
   });
+  
   setTimeout(() => {
     if (intro.style.display !== 'none') {
       intro.style.opacity = 0;
