@@ -25,30 +25,31 @@ font-family: Arial, Helvetica, sans-serif;
     <source src="Untitled_Artwork(1).mp4" type="video/mp4">
   </video>
 </div>
-}
-video.addEventListener('ended', () => {
-      intro.style.opacity = 0;
-      setTimeout(() => intro.style.display = 'none', 1000);
-    });
- setTimeout(() => {
-      if (intro.style.display !== 'none') {
-        intro.style.opacity = 0;
-        setTimeout(() => intro.style.display = 'none', 1000);
-      }
-    }, 6000);
-</style>
+<style>
 #introVideo {
   width: auto;
   height: auto;
-max-width: 65vw
-max-height: 65vh
+max-width: 65vw;
+max-height: 65vh;
   object-fit: contain; 
 background: white;
 }
-video.onended = () => {
+  </style>
+<script>
+const intro = document.getElementById('introVideoContainer');
+  const video = document.getElementById('introVideo');
+  video.addEventListener('ended', () => {
     intro.style.opacity = 0;
-    setTimeout(() => intro.style.display = "none", 1000);
-};
+    setTimeout(() => intro.style.display = 'none', 1000);
+  });
+
+  setTimeout(() => {
+    if (intro.style.display !== 'none') {
+      intro.style.opacity = 0;
+      setTimeout(() => intro.style.display = 'none', 1000);
+    }
+  }, 6000);
+</script>
 <div class="stage" id="stage">
   <div class="ring"></div>
 
