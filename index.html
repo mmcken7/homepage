@@ -14,20 +14,23 @@ font-family: Arial, Helvetica, sans-serif;
   width: 350px;
   height: 350px;
   border-radius: 50%;
-  top:50%; left:50%; transform:translate(-50%, -50%);
+  top:50%; left:50%; transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
   pointer-events: none;
+  z-index: 1;
 }
 .icons img {
   position: absolute;
-  width: 70px;
-  transform-origin: 175px 175px;
+  width: 70px; height: 70px
+  object-fit: contain;
   transition: filter 1.5s ease;
 }
 .title {
   position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
   font-size: clamp(28px, 6vw, 72px);
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -64,11 +67,11 @@ font-family: Arial, Helvetica, sans-serif;
   </h1>
 
   <div class="icons fade-in-icons" id="icons">
-    <img src="baseball.png" alt="baseball" style="transform: rotate(0deg) translate(175px) rotate(0deg);">
-  <img src="dino.png" alt="dino" style="transform: rotate(0deg) translate(175px) rotate(0deg);">
-  <img src="dog.png" alt="dog" style="transform: rotate(0deg) translate(175px) rotate(0deg);">
-    <img src="horse.png"alt="horse" style="transform: rotate(0deg) translate(175px) rotate(0deg);">
-    <img src="money.png" alt="money" style="transform: rotate(0deg) translate(175px) rotate(0deg);">
+    <img src="baseball.png" alt="baseball">
+  <img src="dino.png" alt="dino">
+  <img src="dog.png" alt="dog">
+    <img src="horse.png"alt="horse">
+    <img src="money.png" alt="money">
   </div>
 </div>
 <script>
@@ -77,17 +80,19 @@ window.addEventListener("load", () => {
   setTimeout(() => {
     document.querySelector(".fade-in-icons").classList.add("show");
   }, 1200);
+  const containerSize = 350;
+    const radius = containerSize / 2;
+    const iconSize = 70;
+    const center = radius;
   const icons = document.querySelectorAll(".icons img");
   const total = icons.length;
-  const radius = 175;
-  const center = 175;
 
   icons.forEach((icon, index) => {
     const angle = (index / total) * (2 * Math.PI);
     const x = Math.cos(angle) * radius;
     const y = Math.sin(angle) * radius;
-    icon.style.left = `${175 + x - icon.width / 2}px`;
-    icon.style.top = `${175 + y - icon.height / 2}px`;
+    icon.style.left = `${center + x - (iconSize / 2)}px`;
+    icon.style.top  = `${center + y - (iconSize / 2)}px`;
   });
 });
 </script>
