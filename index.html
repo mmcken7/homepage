@@ -9,7 +9,23 @@ color: white;
 font-size: 32px;
 font-family: Arial, Helvetica, sans-serif; 
 }
- 
+ .icons {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+.icons img {
+  position: absolute;
+  width: 70px;
+  transform-origin: 175px 175px;
+  transition: filter 1.5s ease;
+}
+
 .title {
   position: absolute;
   font-size: clamp(28px, 6vw, 72px);
@@ -56,11 +72,11 @@ body.invert-colors .title {
   </h1>
 
   <div class="icons fade-in-icons" id="icons">
-    <img src="baseball.png" alt="">
-  <img src="dino.png" alt="">
-  <img src="dog.png" alt="">
-    <img src="horse.png" alt="">
-    <img src="money.png" alt="">
+    <img src="baseball.png" style="transform: rotate(0deg) translate(175px) rotate(0deg);">
+  <img src="dino.png" style="transform: rotate(0deg) translate(175px) rotate(0deg);">
+  <img src="dog.png" style="transform: rotate(0deg) translate(175px) rotate(0deg);">
+    <img src="horse.png" style="transform: rotate(0deg) translate(175px) rotate(0deg);">
+    <img src="money.png" style="transform: rotate(0deg) translate(175px) rotate(0deg);">
   </div>
 </div>
 <script>
