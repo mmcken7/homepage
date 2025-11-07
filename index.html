@@ -27,22 +27,20 @@ position: absolute;
  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-     width: 400px;
-    height: 400px;
+     width: 420px;
+    height: 420px;
      pointer-events: none;
-   }
+  }
   .icons img {
  position: absolute;
     width:70px; height:70px;
   object-fit: contain;
   transition: filter 1.5s ease;
+  font-size: 0
   }
-  .fade-in-title, .fade-in-icons {
-  opacity: 0;
-  transition: opacity 5.5s ease;
-}
-    .fade-in-title.show { opacity: 1;}
-    .fade-in-icons.show { opacity: 1; transition-delay: 1s;}
+  .fade-in-title, .fade-in-icons { opacity:0; transition:opacity 5.5s ease; }
+    .fade-in-title.show { opacity:1;}
+    .fade-in-icons.show { opacity:1; transition-delay:1s;}
 </style>
 </head>
   
