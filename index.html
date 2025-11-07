@@ -6,7 +6,7 @@ color: white;
 font-size: 32px;
 font-family: Arial, Helvetica, sans-serif; 
 }
-  #introvideocontainer{
+  #introVideoContainer{
   position: fixed;
   inset: 0;
   width: 100vw;
@@ -19,13 +19,15 @@ font-family: Arial, Helvetica, sans-serif;
   overflow: hidden;
   transition: opacity 1s ease;
   }
-  </style>
+  </style
+    
 <div id="introVideoContainer">
   <video id="introVideo" autoplay muted playsinline>
     <source src="Untitled_Artwork(1).mp4" type="video/mp4">
   </video>
 </div>
-<style>
+  
+</style>
 #introVideo {
   width: 100vw;
   height: 100vh;
@@ -35,7 +37,8 @@ max-height: 100vh;
 background: white;
 }
   </style>
-<script>
+
+</script>
   const intro = document.getElementById('introVideoContainer');
   const video = document.getElementById('introVideo');
   function tryplay() {
@@ -50,9 +53,9 @@ background: white;
     if (video.readyState >= 2) {
       tryPlay();
     } else {
-      video.addEventListener('canplay', tryPlay, { once: true });
+      video.addEventListener('canplay', tryplay, { once: true });
     }
-        document.addEventListener('click', tryPlay, { once: true });
+        document.addEventListener('click', tryplay, { once: true });
   }
   video.addEventListener('ended', () => {
     if (!intro) return;
@@ -66,6 +69,7 @@ background: white;
     }
   }, 6000);
 </script>
+
 <div class="stage" id="stage">
   <div class="ring"></div>
 
@@ -75,7 +79,8 @@ background: white;
 
   <div class="icons" id="icons"></div>
 </div>
-<style>
+
+</style>
 .stage {
   position: relative;
   width: 100vw;
@@ -92,8 +97,5 @@ background: white;
   font-weight: 800;
   text-align: center;
 } 
-<style>
+</style>
 
-<html>
-
-</html>
