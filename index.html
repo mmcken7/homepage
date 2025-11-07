@@ -85,7 +85,17 @@ window.addEventListener("load", () => {
   setTimeout(() => {
     document.querySelector(".fade-in-icons").classList.add("show");
   }, 1200);
-});
+  const icons = document.querySelectorAll(".icons img");
+  const total = icons.length;
+  const radius = 175; // half of circle size
+
+  icons.forEach((icon, index) => {
+    const angle = (index / total) * (2 * Math.PI);
+    const x = Math.cos(angle) * radius;
+    const y = Math.sin(angle) * radius;
+    icon.style.left = `${175 + x - icon.width / 2}px`;
+    icon.style.top = `${175 + y - icon.height / 2}px`;
+  });
 </script>
 
 </body>
