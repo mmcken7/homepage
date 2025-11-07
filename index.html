@@ -23,9 +23,13 @@ font-family: Arial, Helvetica, sans-serif;
   font-weight: 800; text-align: center;
 } 
    .icons {
-position: relative;
-    width: 400px;
+position: absolute;
+ top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+     width: 400px;
     height: 400px;
+     pointer-events: none;
    }
   .icons img {
  position: absolute;
@@ -49,8 +53,8 @@ position: relative;
   </h1>
 
   <div class="icons fade-in-icons" id="icons">
-    <img src="money.png" alt="money">
-    <img src="dog.png" alt="money">
+    <img src="images/money.png" alt="money">
+    <img src="images/dog.png" alt="money">
   </div>
 </div>
   
