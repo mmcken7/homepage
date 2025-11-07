@@ -9,7 +9,14 @@ color: white;
 font-size: 32px;
 font-family: Arial, Helvetica, sans-serif; 
 }
- 
+ .stage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+ }
 .title { 
   position: absolute;
   font-size: clamp(28px, 6vw, 72px);
@@ -18,24 +25,17 @@ font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
   text-align: center;
 } 
-  .fade-in-title, .fade-in-icons {
+  .fade-in-title {
   opacity: 0;
   transition: opacity 5.5s ease; 
 }
     .fade-in-title.show {
   opacity: 1; 
 }
-    .fade-in-icons.show {
-  opacity: 1;
-  transition-delay: 1s; 
-    }
-  .stage {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  place-items: center;
-  overflow: hidden; 
+  .icons img {
+  width: 220px;
+  height: auto;
+  display: block; 
   }
   </style>
 </head>
@@ -46,15 +46,14 @@ font-family: Arial, Helvetica, sans-serif;
     <span class="accent">The Junk</span><br>Drawer
   </h1> 
 
-  <div class="icons fade-in-icons" id="icons">
+  <div class="icons" id="icons">
 <img src="Images/money.png" alt="money">
 </div>
+</div>
+  
 <script>
 window.addEventListener("load", () => { 
   document.querySelector(".fade-in-title").classList.add("show");
-  setTimeout(() => {
-    document.querySelector(".fade-in-icons").classList.add("show");
-  }, 1000);
 });
 </script>
 
