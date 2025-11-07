@@ -18,22 +18,46 @@ font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
   text-align: center;
 } 
+  .fade-in-title, .fade-in-icons {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+    .fade-in-title.show {
+  opacity: 1;
+}
+    .fade-in-icons.show {
+  opacity: 1;
+  transition-delay: 1s;
+    }
+  .stage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  }
   </style>
 </head>
 <body>
+<div class="stage">
+  <h1 class="title fade-in-title">
 
-  video.addEventListener('ended', () => {
-    if (!intro) return;
-    intro.style.opacity = 0;
-    setTimeout(() => intro.style.display = 'none', 1000);
-  });
-  
+    <span class="accent">The Junk</span><br>
+    Drawer
+  </h1>
+
+  <div class="icons fade-in-icons" id="icons">
+   
+  </div>
+</div>
+<script>
+window.addEventListener("load", () => {
+  document.querySelector(".fade-in-title").classList.add("show");
   setTimeout(() => {
-    if (intro.style.display !== 'none') {
-      intro.style.opacity = 0;
-      setTimeout(() => intro.style.display = 'none', 1000);
-    }
-  }, 6000);
+    document.querySelector(".fade-in-icons").classList.add("show");
+  }, 1200); // Delay icons fade by ~1.2s
+});
 </script>
 </body>
 
