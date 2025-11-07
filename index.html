@@ -18,7 +18,8 @@ font-family: Arial, Helvetica, sans-serif;
   position: absolute; top:50%; left:50%;
   transform: translate(-50%,-50%);
   font-size: clamp(28px,6vw,72px);
-  text-transform: uppercase; letter-spacing: 0.12em;
+  text-transform: uppercase; 
+  letter-spacing: 0.12em;
   font-weight: 800; text-align: center;
 } 
    .icons {
@@ -27,7 +28,8 @@ position: relative;
     height: 400px;
    }
   .icons img {
-  width:70px; height:70px;
+ position: absolute;
+    width:70px; height:70px;
   object-fit: contain;
   transition: filter 1.5s ease;
   }
@@ -35,34 +37,31 @@ position: relative;
   opacity: 0;
   transition: opacity 5.5s ease;
 }
-    .fade-in-title.show {
-  opacity: 1;
-}
-    .fade-in-icons.show {
-  opacity: 1;
-  transition-delay: 1s;
-  }
-  </style>
+    .fade-in-title.show { opacity: 1;}
+    .fade-in-icons.show { opacity: 1; transition-delay: 1s;}
+</style>
 </head>
   
 <body>
 <div class="stage">
   <h1 class="title fade-in-title">
-    <span class="accent">The Junk</span><br>
-    Drawer
+    <span class="accent">The Junk</span><br>Drawer
   </h1>
 
   <div class="icons fade-in-icons" id="icons">
-    <img src="money.jpg" alt="money" width="500" height="600">
+    <img src="money.png" alt="money">
+    <img src="dog.png" alt="money">
   </div>
 </div>
+  
 <script>
 window.addEventListener("load", () => {
   document.querySelector(".fade-in-title").classList.add("show");
   setTimeout(() => {
     document.querySelector(".fade-in-icons").classList.add("show");
   }, 1200);
-  const containerSize = 500;
+  
+  const containerSize = 400;
     const radius = containerSize / 2;
     const iconSize = 70;
     const center = radius;
