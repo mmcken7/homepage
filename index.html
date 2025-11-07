@@ -63,12 +63,6 @@ body.invert-colors .title {
 window.addEventListener("load", () => {
   document.querySelector(".fade-in-title").classList.add("show");
   setTimeout(() => {
-    document.body.classList.add("invert-colors");
-  }, 4500);
-  setTimeout(()=> {
-  document.querySelector('.bg-fader').style.opacity = 0;
-}, 1100);
-  setTimeout(() => {
     document.querySelector(".fade-in-icons").classList.add("show");
   }, 1200);
 });
