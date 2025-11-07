@@ -65,6 +65,9 @@ window.addEventListener("load", () => {
   setTimeout(() => {
     document.body.classList.add("invert-colors");
   }, 4500);
+  setTimeout(()=> {
+  document.querySelector('.bg-fader').style.opacity = 0;
+}, 1100);
   setTimeout(() => {
     document.querySelector(".fade-in-icons").classList.add("show");
   }, 1200);
