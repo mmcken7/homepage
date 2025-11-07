@@ -82,7 +82,7 @@ background: white;
     }
   }
       if (video) {
-    if (video.readyState >= 2) {
+    if (video.readyState >= 2) 
       tryPlay();
     } else {
       video.addEventListener('canplay', tryPlay, { once: true });
