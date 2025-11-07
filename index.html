@@ -51,32 +51,35 @@ position: absolute;
   </h1>
 
   <div class="icons fade-in-icons" id="icons">
-    <img src="images/money.png" alt="money">
-    <img src="images/dog.png" alt="money">
+    <img src="images/money.png" alt="money" loading="eager">
+    <img src="images/dog.png" alt="money" loading="eager">
   </div>
 </div>
   
 <script>
 window.addEventListener("load", () => {
-  document.querySelector(".fade-in-title").classList.add("show");
-  setTimeout(() => {
-    document.querySelector(".fade-in-icons").classList.add("show");
-  }, 1200);
-  
-  const containerSize = 400;
-    const radius = containerSize / 2;
-    const iconSize = 70;
-    const center = radius;
-  const icons = document.querySelectorAll(".icons img");
-  const total = icons.length;
+    document.querySelector(".fade-in-title").classList.add("show");
+    setTimeout(() => document.querySelector(".fade-in-icons").classList.add("show"), 1200);
 
-  icons.forEach((icon, index) => {
-    const angle = (index / total) * (2 * Math.PI);
-    const x = Math.cos(angle) * radius;
-    const y = Math.sin(angle) * radius;
-    icon.style.left = `${center + x - (iconSize / 2)}px`;
-    icon.style.top  = `${center + y - (iconSize / 2)}px`;
-  });
+    const box   = document.getElementById("icons");
+    const icons = box.querySelectorAll("img");
+    const total = icons.length;
+
+    const iconSize = 70;
+    const boxW = box.clientWidth, boxH = box.clientHeight;
+    const cx = boxW / 2, cy = boxH / 2;
+    const radius = Math.min(boxW, boxH) / 2 - iconSize / 2;
+
+    if (total === 0) return;
+
+    icons.forEach((img, i) => {
+      img.onerror = () => console.warn("Image failed to load:", img.getAttribute("src"));
+      const angle = -Math.PI / 2 + i * (2 * Math.PI / total);
+      const x = cx + Math.cos(angle) * radius - iconSize / 2;
+      const y = cy + Math.sin(angle) * radius - iconSize / 2;
+      img.style.left = x + "px";
+      img.style.top  = y + "px";
+
 });
 </script>
 
