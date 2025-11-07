@@ -1,5 +1,9 @@
 <style>
-body {
+html,body{
+  margin: 0;
+  overflow-x: hidden;
+}
+  body {
 background-color: black;
 color: white;
 font-size: 32px;
@@ -26,9 +30,9 @@ position: fixed;
 
 #introVideo {
   width: auto;
-  height: auto%;
-max-width: 1080px
-max-height: 1920px
+  height: auto;
+max-width: 65vw
+max-height: 65vh
   object-fit: contain; 
 background: white;
 }
@@ -51,7 +55,8 @@ video.onended = () => {
   width: 100vw;
   height: 100vh;
   display: grid;
-  place-items: center; 
+  place-items: center;
+  overflow: hidden;
 }
 .title {
   position: absolute;
