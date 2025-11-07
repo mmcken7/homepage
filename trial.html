@@ -6,12 +6,41 @@ font-size: 32px;
 font-family: Arial, Helvetica, sans-serif; 
 }
 </style>
+<div id="introVideoContainer">
+  <video id="introVideo" autoplay muted playsinline>
+    <source src="Untitled_Artwork (1).mp4" type="video/mp4">
+  </video>
+</div>
+position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* top of everything */
+  overflow: hidden;
+  transition: opacity 1s ease;
+}
+
+#introVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+video.onended = () => {
+    intro.style.opacity = 0;
+    setTimeout(() => intro.style.display = "none", 1000);
+};
+</div>
 <div class="stage" id="stage">
   <div class="ring"></div>
 
   <h1 class="title">
-    <span class="accent">The Junk</span> Drawer
-  </h1> 
+  <span class="accent">The Junk</span><br>
+  Drawer
+</h1> 
 
   <div class="icons" id="icons"></div>
 </div>
@@ -36,4 +65,3 @@ font-family: Arial, Helvetica, sans-serif;
 <html>
 
 </html>
-
