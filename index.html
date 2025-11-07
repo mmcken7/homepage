@@ -87,7 +87,8 @@ window.addEventListener("load", () => {
   }, 1200);
   const icons = document.querySelectorAll(".icons img");
   const total = icons.length;
-  const radius = 175; // half of circle size
+  const radius = 175;
+  const center = 175;
 
   icons.forEach((icon, index) => {
     const angle = (index / total) * (2 * Math.PI);
@@ -96,6 +97,7 @@ window.addEventListener("load", () => {
     icon.style.left = `${175 + x - icon.width / 2}px`;
     icon.style.top = `${175 + y - icon.height / 2}px`;
   });
+});
 </script>
 
 </body>
