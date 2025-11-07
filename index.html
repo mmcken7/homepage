@@ -9,23 +9,13 @@ color: white;
 font-size: 32px;
 font-family: Arial, Helvetica, sans-serif; 
 }
-  .circle-wrap {
-  position: relative;
-  width: 400px;
-  height: 400px;
-  }
- .icon {
-  position: absolute;
-  width: 90px;
-  height: 90px;
-  transform-origin: 50% 200px;
-  animation: fadeIn 1.5s ease forwards;
-}
-.icons img {
-  position: absolute;
-  width: 70px; height: 70px
-  object-fit: contain;
-  transition: filter 1.5s ease;
+  .stage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
 }
 .title {
   position: absolute;
@@ -37,6 +27,17 @@ font-family: Arial, Helvetica, sans-serif;
   font-weight: 800;
   text-align: center;
 } 
+   .icons {
+position: relative;
+    width: 400px;
+    height: 400px;
+   }
+  .icons img {
+  position: absolute;
+  width: 70px; height: 70px
+  object-fit: contain;
+  transition: filter 1.5s ease;
+  }
   .fade-in-title, .fade-in-icons {
   opacity: 0;
   transition: opacity 5.5s ease;
@@ -47,14 +48,6 @@ font-family: Arial, Helvetica, sans-serif;
     .fade-in-icons.show {
   opacity: 1;
   transition-delay: 1s;
-    }
-  .stage {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
   }
   </style>
 </head>
