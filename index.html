@@ -1,85 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> 
+<html lang="en"> 
 <head>
 <style>
-html,body{ margin: 0; overflow-x: hidden; }
+html,body{ margin: 0; overflow-x: hidden; } 
   body {
 background-color: black;
 color: white;
 font-size: 32px;
 font-family: Arial, Helvetica, sans-serif; 
 }
-  .stage {
-    position: relative;
-    width: 100vw; height: 100vh;
-    display: grid; place-items: center; overflow: hidden;
-}
-.title {
-  position: absolute; top:50%; left:50%;
-  transform: translate(-50%,-50%);
-  font-size: clamp(28px,6vw,72px);
-  text-transform: uppercase; 
+ 
+.title { 
+  position: absolute;
+  font-size: clamp(28px, 6vw, 72px);
+  text-transform: uppercase;
   letter-spacing: 0.12em;
-  font-weight: 800; text-align: center;
+  font-weight: 800;
+  text-align: center;
 } 
-   .icons {
-position: absolute;
- top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-     width: 420px;
-    height: 420px;
-     pointer-events: none;
+  .fade-in-title, .fade-in-icons {
+  opacity: 0;
+  transition: opacity 5.5s ease; 
+}
+    .fade-in-title.show {
+  opacity: 1; 
+}
+    .fade-in-icons.show {
+  opacity: 1;
+  transition-delay: 1s; 
+    }
+  .stage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden; 
   }
-  .icons img {
- position: absolute;
-    width:70px; height:70px;
-  object-fit: contain;
-  transition: filter 1.5s ease;
-  font-size: 0
-  }
-  .fade-in-title, .fade-in-icons { opacity:0; transition:opacity 5.5s ease; }
-    .fade-in-title.show { opacity:1;}
-    .fade-in-icons.show { opacity:1; transition-delay:1s;}
-</style>
+  </style>
 </head>
   
 <body>
 <div class="stage">
   <h1 class="title fade-in-title">
     <span class="accent">The Junk</span><br>Drawer
-  </h1>
+  </h1> 
 
   <div class="icons fade-in-icons" id="icons">
-    <img src=(Images/dino.png) alt="money" loading="eager">
-    <img src="./images/dog.png" alt="dog" loading="eager">
+   
   </div>
 </div>
-  
 <script>
-window.addEventListener("load", () => {
-    document.querySelector(".fade-in-title").classList.add("show");
-    setTimeout(() => document.querySelector(".fade-in-icons").classList.add("show"), 1200);
-
-    const box   = document.getElementById("icons");
-    const icons = box.querySelectorAll("img");
-    const total = icons.length;
-
-    const iconSize = 70;
-    const boxW = box.clientWidth, boxH = box.clientHeight;
-    const cx = boxW / 2, cy = boxH / 2;
-    const radius = Math.min(boxW, boxH) / 2 - iconSize / 2;
-
-    if (total === 0) return;
-
-    icons.forEach((img, i) => {
-      img.onerror = () => console.warn("Image failed to load:", img.getAttribute("src"));
-      const angle = -Math.PI / 2 + i * (2 * Math.PI / total);
-      const x = cx + Math.cos(angle) * radius - iconSize / 2;
-      const y = cy + Math.sin(angle) * radius - iconSize / 2;
-      img.style.left = x + "px";
-      img.style.top  = y + "px";
-
+window.addEventListener("load", () => { 
+  document.querySelector(".fade-in-title").classList.add("show");
+  setTimeout(() => {
+    document.querySelector(".fade-in-icons").classList.add("show");
+  }, 1200); // Delay icons fade by ~1.2s
 });
 </script>
 
