@@ -65,8 +65,6 @@ font-family: Arial, Helvetica, sans-serif;
       translate(var(--radius))
       rotate(calc(-1 * var(--angle)))
       translateY(0);
-     animation: bob var(--speed, 8s) ease-in-out infinite;
-  animation-delay: var(--delay, 0s);
 }
   }
 50% {
@@ -74,8 +72,9 @@ font-family: Arial, Helvetica, sans-serif;
       translate(-50%,-50%)
       rotate(var(--angle))
       translate(var(--radius))
-      rotate(calc(-1 * var(--angle)))
-      translateY(-8px);
+      rotate(calc(-1 * var(--angle)));
+      animation: bob var(--speed, 8s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
   }
   }
   </style>
