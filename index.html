@@ -65,6 +65,9 @@ font-family: Arial, Helvetica, sans-serif;
       translate(var(--radius))
       rotate(calc(-1 * var(--angle)))
       translateY(0);
+     animation: bob var(--speed, 8s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
   }
 50% {
     transform:
