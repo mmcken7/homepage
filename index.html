@@ -49,10 +49,10 @@ font-family: Arial, Helvetica, sans-serif;
     rotate(var(--angle))
     translate(var(--radius))
     rotate(calc(-1 * var(--angle)));
-  animation: bob 8s ease-in-out infinite;
+  animation: bob var(--speed, 8s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
 }
-  .i1{ --angle:-12deg; --radius:33vmin; --delay:0s; --size: 180px; --speed:7s; }
+.i1{ --angle:-12deg; --radius:33vmin; --delay:0s; --size: 180px; --speed:7s; }
 .i2{ --angle: 34deg; --radius:41vmin; --delay:0.6s; --size: 160px; --speed:9.5s;}
 .i3{ --angle: 98deg; --radius:37vmin; --delay:1.2s; --size: 200px; --speed:6.5s;}
 .i4{ --angle:162deg; --radius:43vmin; --delay:.3s; --size: 170px; --speed:8.5s;}
@@ -65,7 +65,6 @@ font-family: Arial, Helvetica, sans-serif;
       translate(var(--radius))
       rotate(calc(-1 * var(--angle)))
       translateY(0);
-}
   }
 50% {
     transform:
@@ -73,8 +72,6 @@ font-family: Arial, Helvetica, sans-serif;
       rotate(var(--angle))
       translate(var(--radius))
       rotate(calc(-1 * var(--angle)));
-      animation: bob var(--speed, 8s) ease-in-out infinite;
-  animation-delay: var(--delay, 0s);
   }
   }
   </style>
