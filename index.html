@@ -31,24 +31,50 @@ font-family: Arial, Helvetica, sans-serif;
 }
     .fade-in-title.show {
   opacity: 1; 
+  }
+  .icons { 
+  position: relative; 
+  width: 100vw; 
+  height: 100vh; 
+  z-index: 1;
+  }
+.icon{
+  position:absolute;
+  top:50%; left:50%;
+  width: clamp(64px, 8vmin, 120px);
+  height:auto;
+  opacity:.9;
+  transform:
+    translate(-50%,-50%)
+    rotate(var(--angle))
+    translate(var(--radius))
+    rotate(calc(-1 * var(--angle)));
+  animation: bob 8s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
 }
-  .icons img {
-  width: 220px;
-  height: auto;
-  display: block; 
+  .i1{ --angle:-12deg; --radius:36vmin; --delay:0s;   }
+.i2{ --angle: 34deg; --radius:44vmin; --delay:0.6s; }
+.i3{ --angle: 98deg; --radius:40vmin; --delay:1.2s; }
+.i4{ --angle:162deg; --radius:46vmin; --delay:.3s;  }
+.i5{ --angle:218deg; --radius:39vmin; --delay:.9s;  }
+.i6{ --angle:296deg; --radius:43vmin; --delay:1.6s; }
+  @keyframes bob {
+  0%,100% {
+    transform:
+      translate(-50%,-50%)
+      rotate(var(--angle))
+      translate(var(--radius))
+      rotate(calc(-1 * var(--angle)))
+      translateY(0);
   }
-  .icon {
-  position: absolute;
-  width: 120px;
-  height: auto;
-  filter: invert(1);
-  opacity: 0.9;
+50% {
+    transform:
+      translate(-50%,-50%)
+      rotate(var(--angle))
+      translate(var(--radius))
+      rotate(calc(-1 * var(--angle)))
+      translateY(-8px);
   }
-  .icon1 { top: 20%; left: 50%; transform: translateX(-50%); }
-.icon2 { top: 40%; right: 15%; }
-.icon3 { bottom: 20%; right: 30%; }
-.icon4 { bottom: 18%; left: 28%; }
-.icon5 { top: 35%; left: 15%; }
   }
   </style>
 </head>
