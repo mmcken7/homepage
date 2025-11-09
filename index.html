@@ -54,7 +54,7 @@ font-family: Arial, Helvetica, sans-serif;
   opacity:.9;
   transform:
    translate(-50%, -50%)
-    translateY(var(--yshift, 0))
+    translate(-50%, calc(-50% + var(--yshift, 0)))
     rotate(var(--angle))
     translate(var(--radius))
     rotate(calc(-1 * var(--angle)))
