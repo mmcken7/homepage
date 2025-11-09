@@ -50,7 +50,7 @@ font-family: Arial, Helvetica, sans-serif;
 .icon{
   position:absolute;
   top:50%; left:50%;
-  width: var(--size, clamp (120px, 12vmin, 220px));
+  width: var(--size, clamp(120px, 12vmin, 220px));
   height:auto;
   opacity:.9;
   transform:
@@ -59,9 +59,12 @@ font-family: Arial, Helvetica, sans-serif;
     translate(var(--radius))
     rotate(calc(-1 * var(--angle)));
   translate(var(--dx, 0), var(--dy, 0));
-  animation: bob var(--speed, 8s) ease-in-out infinite;
-  animation-delay: var(--delay, 0s);
+  animation:bob var(--speed, 8s) ease-in-out infinite;
+  animation-delay:var(--delay, 0s);
+cursor: grab; z-index:3; 
 }
+.icon.dragging{ cursor:grabbing; animation:none !important; }
+
 .i1{ --angle:320deg; --radius:50vmin; --delay:0s; --size: 215px; --speed:7s; }
 .i2{ --angle: 35deg; --radius:60vmin; --delay:0.6s; --size: 270px; --speed:9.5s;}
 .i3{ --angle: 123deg; --radius:30vmin; --delay:1.2s; --size: 200px; --speed:6.5s;}
@@ -70,26 +73,65 @@ font-family: Arial, Helvetica, sans-serif;
 .i6{ --angle:205deg; --radius:65vmin; --delay:.9s; --size: 215px;--speed:10s;}
 .i7{ --angle:4deg; --radius:60vmin; --delay:.9s; --size: 250px;--speed:10s;}
 .i8{ --angle:75deg; --radius:40vmin; --delay:.9s; --size: 245px;--speed:10s;}  
-  @keyframes bob {
-  0%,100% {
+ @keyframes bob{
+  0%,100%{
     transform:
-      translate(-50%,-50%)
+      translate(-50%, calc(-50% + var(--yshift, 0)))
       rotate(var(--angle))
       translate(var(--radius))
       rotate(calc(-1 * var(--angle)))
+      translate(var(--dx, 0), var(--dy, 0))
       translateY(0);
   }
-50% {
+  50%{
     transform:
-      translate(-50%,-50%)
+      translate(-50%, calc(-50% + var(--yshift, 0)))
       rotate(var(--angle))
       translate(var(--radius))
-      rotate(calc(-1 * var(--angle)));
+      rotate(calc(-1 * var(--angle)))
+      translate(var(--dx, 0), var(--dy, 0))
+      translateY(-8px);
   }
-  }
-  </style>
+}
+</style>
 </head>
   
+  <script>
+(function(){
+  const icons = document.querySelectorAll('.icon');
+  const getPx = (v) => (v && v.endsWith('px')) ? parseFloat(v) : 0;
+
+  icons.forEach(el => {
+    let startX=0, startY=0, baseDx=0, baseDy=0;
+
+    const down = (e) => {
+      el.classList.add('dragging');
+      el.setPointerCapture?.(e.pointerId);
+      startX = e.clientX; startY = e.clientY;
+      const cs = getComputedStyle(el);
+      baseDx = getPx(cs.getPropertyValue('--dx'));
+      baseDy = getPx(cs.getPropertyValue('--dy'));
+      window.addEventListener('pointermove', move);
+      window.addEventListener('pointerup', up, { once:true });
+      window.addEventListener('pointercancel', up, { once:true });
+    };
+
+    const move = (e) => {
+      const dx = baseDx + (e.clientX - startX);
+      const dy = baseDy + (e.clientY - startY);
+      el.style.setProperty('--dx', dx + 'px');
+      el.style.setProperty('--dy', dy + 'px');
+    };
+
+    const up = (e) => {
+      el.classList.remove('dragging');
+      window.removeEventListener('pointermove', move);
+    };
+
+    el.addEventListener('pointerdown', down);
+  });
+})();
+</script>
 <body>
 <div class="stage">
   <h1 class="title fade-in-title">
