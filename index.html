@@ -45,7 +45,7 @@ font-family: Arial, Helvetica, sans-serif;
   width: 100vw; 
   height: 100vh; 
   z-index: 1;
-    .icons { --yshift: -12vmin; }
+--yshift: -12vmin;
   }
 .icon{
   position:absolute;
@@ -62,6 +62,7 @@ font-family: Arial, Helvetica, sans-serif;
   animation:bob var(--speed, 8s) ease-in-out infinite;
   animation-delay:var(--delay, 0s);
   cursor:grab; z-index:3;
+  will-change: transform;
 }
 .icon.dragging{ cursor:grabbing; animation:none !important; }
 
@@ -96,42 +97,6 @@ font-family: Arial, Helvetica, sans-serif;
 </style>
 </head>
   
-  <script>
-(function(){
-  const icons = document.querySelectorAll('.icon');
-  const getPx = (v) => (v && v.endsWith('px')) ? parseFloat(v) : 0;
-
-  icons.forEach(el => {
-    let startX=0, startY=0, baseDx=0, baseDy=0;
-
-    const down = (e) => {
-      el.classList.add('dragging');
-      el.setPointerCapture?.(e.pointerId);
-      startX = e.clientX; startY = e.clientY;
-      const cs = getComputedStyle(el);
-      baseDx = getPx(cs.getPropertyValue('--dx'));
-      baseDy = getPx(cs.getPropertyValue('--dy'));
-      window.addEventListener('pointermove', move);
-      window.addEventListener('pointerup', up, { once:true });
-      window.addEventListener('pointercancel', up, { once:true });
-    };
-
-    const move = (e) => {
-      const dx = baseDx + (e.clientX - startX);
-      const dy = baseDy + (e.clientY - startY);
-      el.style.setProperty('--dx', dx + 'px');
-      el.style.setProperty('--dy', dy + 'px');
-    };
-
-    const up = (e) => {
-      el.classList.remove('dragging');
-      window.removeEventListener('pointermove', move);
-    };
-
-    el.addEventListener('pointerdown', down);
-  });
-})();
-</script>
 <body>
 <div class="stage">
   <h1 class="title fade-in-title">
@@ -149,7 +114,7 @@ font-family: Arial, Helvetica, sans-serif;
 <img class="icon i8" src="Images/bull.png" alt="bull">
 </div>
 </div>
-  
+
 <script>
 window.addEventListener("load", () => { 
   document.querySelector(".fade-in-title").classList.add("show");
