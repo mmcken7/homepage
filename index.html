@@ -54,14 +54,14 @@ font-family: Arial, Helvetica, sans-serif;
   height:auto;
   opacity:.9;
   transform:
-    translate(-50%,-50%)
+    translate(-50%, calc(-50% + var(--yshift, 0)))
     rotate(var(--angle))
     translate(var(--radius))
-    rotate(calc(-1 * var(--angle)));
-  translate(var(--dx, 0), var(--dy, 0));
+    rotate(calc(-1 * var(--angle)))
+    translate(var(--dx, 0), var(--dy, 0));
   animation:bob var(--speed, 8s) ease-in-out infinite;
   animation-delay:var(--delay, 0s);
-cursor: grab; z-index:3; 
+  cursor:grab; z-index:3;
 }
 .icon.dragging{ cursor:grabbing; animation:none !important; }
 
