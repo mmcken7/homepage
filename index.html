@@ -158,6 +158,41 @@ window.addEventListener("load", () => {
   }, 1200);
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const icons = document.querySelectorAll('.icon');
+  const getPx = v => (v && v.endsWith('px')) ? parseFloat(v) : 0;
 
+  icons.forEach(el => {
+    let startX=0, startY=0, baseDx=0, baseDy=0;
+
+    const down = e => {
+      el.classList.add('dragging');
+      el.setPointerCapture?.(e.pointerId);
+      startX = e.clientX;
+      startY = e.clientY;
+      const cs = getComputedStyle(el);
+      baseDx = getPx(cs.getPropertyValue('--dx'));
+      baseDy = getPx(cs.getPropertyValue('--dy'));
+      window.addEventListener('pointermove', move);
+      window.addEventListener('pointerup', up, { once:true });
+    };
+
+    const move = e => {
+      const dx = baseDx + (e.clientX - startX);
+      const dy = baseDy + (e.clientY - startY);
+      el.style.setProperty('--dx', dx + 'px');
+      el.style.setProperty('--dy', dy + 'px');
+    };
+
+    const up = () => {
+      el.classList.remove('dragging');
+      window.removeEventListener('pointermove', move);
+    };
+
+    el.addEventListener('pointerdown', down);
+  });
+});
+</script>
 </body>
 </html>
