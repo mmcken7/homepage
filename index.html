@@ -24,6 +24,7 @@ font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 0.12em;
   font-weight: 800;
   text-align: center;
+  z-index:10;
 } 
   .title a {
   color: white;
@@ -73,6 +74,17 @@ font-family: Arial, Helvetica, sans-serif;
   animation-delay: var(--delay, 0s);
   cursor: grab; z-index: 3; will-change: transform;
 }
+   .starfield{
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: transparent;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 2.5s ease; /* match vibe w/ title */
+}
+.starfield.show { opacity: 1;}
+  
 .icon.dragging{ cursor:grabbing; animation:none !important; }
 
 .i1{ --angle:320deg; --radius:50vmin; --delay:0s; --size: 215px; --speed:7s; }
@@ -110,19 +122,7 @@ font-family: Arial, Helvetica, sans-serif;
   
 <body>
   <canvas id="starfield" class="starfield"></canvas>
-  .starfield{
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background: transparent;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 2.5s ease; /* match vibe w/ title */
-}
-
-.starfield.show {
-  opacity: 1;
-}
+  
 <div class="stage">
   <h1 class="title fade-in-title">
     <a href="https://www.instagram.com/myamkzn/" target="_blank">
