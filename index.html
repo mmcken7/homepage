@@ -82,7 +82,7 @@ font-family: Arial, Helvetica, sans-serif;
   background: transparent;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 2.5s ease; /* match vibe w/ title */
+  transition: opacity 2.5s ease;
 }
 .starfield.show { opacity: 1;}
   
@@ -140,6 +140,27 @@ font-family: Arial, Helvetica, sans-serif;
   
 .fade-in-player { opacity: 0; transition: opacity 1.2s ease; }
 .fade-in-player.show { opacity: 1; }
+  
+  .arrow-hint {
+  position: relative;
+  text-align: center;
+  font-size: 1.1rem;
+  color: white;
+  opacity: 0.8;
+  animation: fadeArrow 3s ease-in-out infinite;
+  margin-top: -12px;
+}
+
+.arrow-hint span {
+  display: block;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+@keyframes fadeArrow {
+  0%, 100% { opacity: 0.2; transform: translateY(0); }
+  50%      { opacity: 1;   transform: translateY(6px); }
+}
 </style>
 </head>
   
@@ -286,6 +307,9 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
   
 </script>
+ <div class="arrow-hint">
+  click <span>↓</span>
+</div>
   <div class="player fade-in-player" id="player">
   <iframe
     style="border-radius:12px"
