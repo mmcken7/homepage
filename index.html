@@ -144,7 +144,6 @@ font-family: Arial, Helvetica, sans-serif;
   .arrow-hint {
   position: relative;
   top: -10px;
-  left: -200px;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 300
@@ -157,7 +156,7 @@ font-family: Arial, Helvetica, sans-serif;
 
 .arrow-hint span {
   display: block;
-  font-size: clamp(20px, 2.4vw, 32px);
+  font-size: clamp(14px, 1.5vw, 20px);
   line-height: 1;
 }
 
@@ -319,13 +318,10 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
   
 </script>
- <div class="arrow-hint">
+ <div class="arrow-hint fade-in-click">
   click <span>↓</span>
 </div>
   <div class="player fade-in-player" id="player">
-    <div class="arrow-hint fade-in-click">
-  click <span>↓</span>
-</div>
 
   <iframe
     style="border-radius:12px"
