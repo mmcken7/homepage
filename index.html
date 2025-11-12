@@ -165,6 +165,13 @@ font-family: Arial, Helvetica, sans-serif;
   0%, 100% { opacity: 0.3; transform: translateY(0); }
   50%      { opacity: 1;   transform: translateY(6px); }
 }
+  .fade-in-click {
+  opacity: 0;
+  transition: opacity 5.5s ease;
+}
+.fade-in-click.show {
+  opacity: 1;
+}
 </style>
 </head>
   
@@ -195,6 +202,7 @@ font-family: Arial, Helvetica, sans-serif;
 <script>
 window.addEventListener("load", () => { 
   document.querySelector(".fade-in-title").classList.add("show");
+  document.querySelector(".fade-in-click").classList.add("show");
   document.querySelector("#starfield").classList.add("show");
   setTimeout(() => {
     document.querySelector(".fade-in-icons").classList.add("show");
@@ -315,6 +323,10 @@ document.addEventListener('DOMContentLoaded', () => {
   click <span>↓</span>
 </div>
   <div class="player fade-in-player" id="player">
+    <div class="arrow-hint fade-in-click">
+  click <span>↓</span>
+</div>
+
   <iframe
     style="border-radius:12px"
     src="https://open.spotify.com/embed/track/1nLnpLXvl68RZCSjfkyiaa?utm_source=generator&theme=0"
