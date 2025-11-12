@@ -146,20 +146,21 @@ font-family: Arial, Helvetica, sans-serif;
   top: -10px;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 300
-  font-size: 1.1rem;
+  font-weight: 300;
+  font-size: clamp(12px, 1.2vw, 18px);
   color: white;
   opacity: 0.8;
-  animation: fadeArrow 3s ease-in-out infinite;
   margin-top: -12px;
 }
-
 .arrow-hint span {
   display: block;
   font-size: clamp(14px, 1.5vw, 20px);
   line-height: 1;
 }
-
+  .arrow-hint.show{
+  opacity: 1;
+  animation: fadeArrow 5s ease-in-out infinite;
+}
 @keyframes fadeArrow {
   0%, 100% { opacity: 0.3; transform: translateY(0); }
   50%      { opacity: 1;   transform: translateY(6px); }
@@ -201,11 +202,11 @@ font-family: Arial, Helvetica, sans-serif;
 <script>
 window.addEventListener("load", () => { 
   document.querySelector(".fade-in-title").classList.add("show");
-  document.querySelector(".fade-in-click").classList.add("show");
   document.querySelector("#starfield").classList.add("show");
   setTimeout(() => {
     document.querySelector(".fade-in-icons").classList.add("show");
     document.querySelector("#player")?.classList.add("show");
+    document.querySelector(".arrow-hint").classList.add("show");
     document.querySelector("#video").autoplay = true;
   }, 1200);
 });
@@ -318,19 +319,11 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
   
 </script>
- <div class="arrow-hint fade-in-click">
+  <div style="height: 40vh;"></div>
+  
+  <div class="arrow-hint">
   click <span>↓</span>
 </div>
-  <div class="player fade-in-player" id="player">
-
-  <iframe
-    style="border-radius:12px"
-    src="https://open.spotify.com/embed/track/1nLnpLXvl68RZCSjfkyiaa?utm_source=generator&theme=0"
-    width="100%" height="80" frameborder="0"
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-  </iframe>
-</div>
-  <div style="height: 40vh;"></div>
 
 <div class="player fade-in-player" id="player">
   <iframe
